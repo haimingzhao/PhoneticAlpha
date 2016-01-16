@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+<title>W3.CSS</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="http://www.w3schools.com/lib/w3.css">
+<body>
+
+<header class="w3-container w3-red">
+<h1>PhoneticAlpha</h1>
+</header>
+
+
+<div class="w3-container w3-row w3-border">
+<div class="w3-container w3-half w3-border">
+  Just type something
+  <!-- TODO: make it biggger and resize horizontally -->
+  <input id="input" type="text" style="resize:horizontal;"/>
+</div>
+<div class="w3-container w3-half w3-border">
+  <p id="output"></p>
+</div>
+</div>
+
+<footer class="w3-container w3-red">
+  <h5>PhoneticAlpha</h5>
+  <p>A tool for those who can't remember the phonetic alphabets.</p>
+</footer>
+
+<script type="text/javascript">
+    setInterval(function() { update(); }, 100);
+    var oldval = document.getElementById('input').value;
+    function update() {
+        var input = document.getElementById('input');
+        if (input.value != oldval) {
+        	var output = document.getElementById('output');
+	        var str = getPhonetic(input.value);
+	        output.innerHTML = str;
+	        oldval = document.getElementById('input').value;
+        }
+        
+    }
+    // TODO: color each word differently and highlight the first character
+    function getPhonetic(val){
+    	var output = "";
+    	for (var i = 0, len = val.length; i < len; i++){
+			if(table[val[i].toUpperCase()]){
+				output += table[val[i].toUpperCase()] + " ";
+			}else{
+				output += val[i] + " ";
+			}
+		}
+		return output;
+    }
+
+    // TODO: load table from json 
+    // TODO: choose different table
+    table = {
+	  "A": "Alpha",
+	  "B": "Bravo",
+	  "C": "Charlie",
+	  "D": "Delta",
+	  "E": "Echo",
+	  "F": "Foxtrot",
+	  "G": "Golf",
+	  "H": "Hotel",
+	  "I": "India",
+	  "J": "Juliett",
+	  "K": "Kilo",
+	  "L": "Lima",
+	  "M": "Mike",
+	  "N": "November",
+	  "O": "Oscar",
+	  "P": "Papa",
+	  "Q": "Quebec",
+	  "R": "Romeo",
+	  "S": "Sierra",
+	  "T": "Tango",
+	  "U": "Uniform",
+	  "V": "Victor",
+	  "W": "Whiskey",
+	  "X": "X-ray",
+	  "Y": "Yankee",
+	  "Z": "Zulu"
+	};
+
+</script>
+
+</body>
+</html> 
